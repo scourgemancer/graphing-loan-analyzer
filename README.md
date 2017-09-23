@@ -1,2 +1,2 @@
 # Graphing-Loan-Analyzer
-Graphs loans and payments over time; even allowing users to compare payment methods and plans.
+Lets you input information about any loans you might have and customize payment plans to show you a graoh of cost over time and allowing users tocompare how different plans affect loans over time.
