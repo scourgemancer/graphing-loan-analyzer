@@ -1,3 +1,5 @@
+package com.timothygeary;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
