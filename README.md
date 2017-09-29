@@ -1,2 +1,4 @@
 # Graphing-Loan-Analyzer
-Lets you input information about any loans you might have and customize payment plans to show you a graph of cost over time and allowing users tocompare how different plans affect loans over time.
+Lets you input information about loans and customize payment plans to show a graph of balance, or cost, over time.
+
+Also allows multiple plans to be shown at once to compare how different plans affect the same loans differently over time.
