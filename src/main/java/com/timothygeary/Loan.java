@@ -9,15 +9,20 @@ public class Loan{
     public String name;
     private BigDecimal amount;
     private BigDecimal interestRate;
-    private BigDecimal period;
+    private BigDecimal period; //in days
 
 
     //Getters and setters for the above variables
+    public String getName(){ return name; }
+    public void setName(String newName){ this.name = newName; }
+
     public BigDecimal getInterestRate(){ return interestRate; }
-    public void setInterestRate(BigDecimal interestRate){ this.interestRate = interestRate; }
+    public void setInterestRate(BigDecimal newInterestRate){ this.interestRate = newInterestRate; }
 
     public BigDecimal getPeriod(){ return period; }
-    public void setPeriod(BigDecimal period){ this.period = period; }
+    public void setPeriod(BigDecimal newPeriod){ this.period = newPeriod; }
+
+    public BigDecimal getAmount(){ return amount; }
 
 
     //A few simple constructors for flexibility
@@ -68,6 +73,12 @@ public class Loan{
     /** Accrues interest on the loan and returns it's new amount */
     public BigDecimal accrueInterest(){
         amount = amount.add(calculateInterest());
+        return amount;
+    }
+
+    /** Accrues interest on the loan for the given number of periods and returns it's new amount */
+    public BigDecimal accrueInterest(int n){
+        amount = amount.add(calculateInterest(n));
         return amount;
     }
 
