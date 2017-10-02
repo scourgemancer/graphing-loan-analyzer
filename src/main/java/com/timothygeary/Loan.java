@@ -48,9 +48,9 @@ public class Loan{
     //Relevant functions for the loan class
     /** Calculates interest for the loan's next period */
     public BigDecimal calculateInterest(){
-        return interestRate.divide(new BigDecimal(100), 2, RoundingMode.CEILING)  //convert from percent to decimal
-                .divide(period.divide(new BigDecimal("365.25"), 11, RoundingMode.CEILING),
-                        2, RoundingMode.CEILING)
+        return interestRate.divide(new BigDecimal(100), 5, RoundingMode.CEILING)  //convert from percent to decimal
+                .multiply(period)
+                .divide(new BigDecimal("365.25"), 11, RoundingMode.CEILING)
                 .add(BigDecimal.ONE)
                 .multiply(amount)           //get what the new amount would be
                 .subtract(amount);         //now just take the difference
@@ -61,11 +61,11 @@ public class Loan{
         if(n <= 0) return BigDecimal.ZERO; //if it's zero or a negative number, just return zero
         BigDecimal tempAmount = new BigDecimal( amount.toString() );
         while(n > 0){ //just keep accruing interest using the same formula as calculateInterest()
-             tempAmount = interestRate.divide(new BigDecimal(100), 2, RoundingMode.CEILING)
-                            .divide(period.divide(new BigDecimal("365.25"), 11, RoundingMode.CEILING),
-                                    2, RoundingMode.CEILING)
-                            .add(BigDecimal.ONE)
-                            .multiply(tempAmount);
+             tempAmount = interestRate.divide(new BigDecimal(100), 5, RoundingMode.CEILING)  //convert from percent to decimal
+                     .multiply(period)
+                     .divide(new BigDecimal("365.25"), 11, RoundingMode.CEILING)
+                     .add(BigDecimal.ONE)
+                     .multiply(tempAmount);
             n--;
         }
         tempAmount = tempAmount.subtract(amount); //now take the difference
