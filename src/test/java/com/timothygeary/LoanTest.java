@@ -56,25 +56,25 @@ public class LoanTest{
     @Test
     public void testCalculateInterest(){
         Loan test = new Loan("Test Loan", new BigDecimal("36500"), new BigDecimal("6.25"), new BigDecimal("1"));
-        assertEquals(test.calculateInterest(), new BigDecimal("6.18"));
+        assertEquals(test.calculateInterest(), new BigDecimal("6.25"));
     }
 
     @Test
     public void testCalculateInterestWithAParameter(){
-        Loan test = new Loan("Test Loan", new BigDecimal("36500"), new BigDecimal("6"), new BigDecimal("1"));
-        assertEquals(test.calculateInterest(24), new BigDecimal("151.17"));
+        Loan test = new Loan("Test Loan", new BigDecimal("36500"), new BigDecimal("6.25"), new BigDecimal("1"));
+        assertEquals(test.calculateInterest(24), new BigDecimal("150.31"));
     }
 
     @Test
     public void testAccrueInterest(){
-        Loan test = new Loan("Test Loan", new BigDecimal("36500"), new BigDecimal("6"), new BigDecimal("1"));
-        assertEquals(test.accrueInterest(), new BigDecimal("36506.18"));
+        Loan test = new Loan("Test Loan", new BigDecimal("36500"), new BigDecimal("6.25"), new BigDecimal("1"));
+        assertEquals(test.accrueInterest(), new BigDecimal("36506.25"));
     }
 
     @Test
     public void testAccrueInterestWithAParameter(){
-        Loan test = new Loan("Test Loan", new BigDecimal("36500"), new BigDecimal("6"), new BigDecimal("1"));
-        assertEquals(test.accrueInterest(24), new BigDecimal("36651.17"));
+        Loan test = new Loan("Test Loan", new BigDecimal("36500"), new BigDecimal("6.25"), new BigDecimal("1"));
+        assertEquals(test.accrueInterest(24), new BigDecimal("36650.31"));
     }
 
     @Test
