@@ -53,7 +53,8 @@ public class Loan{
                 .divide(new BigDecimal("365.25"), 11, RoundingMode.CEILING)
                 .add(BigDecimal.ONE)
                 .multiply(amount)           //get what the new amount would be
-                .subtract(amount);         //now just take the difference
+                .subtract(amount)          //take the difference
+                .divide(BigDecimal.ONE, 2, RoundingMode.CEILING);  //just rounds to the nearest cent
     }
 
     /** Calculates interest for the loan over it's next n-many periods */
@@ -65,7 +66,8 @@ public class Loan{
                      .multiply(period)
                      .divide(new BigDecimal("365.25"), 11, RoundingMode.CEILING)
                      .add(BigDecimal.ONE)
-                     .multiply(tempAmount);
+                     .multiply(tempAmount)
+                     .divide(BigDecimal.ONE, 2, RoundingMode.CEILING);
             n--;
         }
         tempAmount = tempAmount.subtract(amount); //now take the difference
