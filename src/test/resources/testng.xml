@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1">
-    <test name="Unit1">
+<suite name="Test Suite">
+    <test name="Unit Tests">
         <classes>
             <class name="com.timothygeary.LoanTest"/>
+            <class name="com.timothygeary.AccountTest"/>
         </classes>
     </test>
 </suite>
