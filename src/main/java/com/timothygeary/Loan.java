@@ -26,7 +26,7 @@ public class Loan{
 
 
     //A few simple constructors for flexibility
-    public Loan(){ }
+    public Loan(){ this.name = ""; }
 
     public Loan(String n){
         this();
