@@ -14,7 +14,7 @@ public class LoanTest{
         assertEquals(test.getName(), "Test Loan");
     }
 
-    @Test
+    @Test(dependsOnMethods = "testGetName")
     public void testSetName(){
         Loan test = new Loan("Test Loan");
         test.setName("different name");
@@ -33,7 +33,7 @@ public class LoanTest{
         assertEquals(test.getInterestRate(), new BigDecimal("6"));
     }
 
-    @Test
+    @Test(dependsOnMethods = "testGetInterestRate")
     public void testSetInterestRate(){
         Loan test = new Loan("Test Loan", new BigDecimal("42"), new BigDecimal("6"), new BigDecimal("1"));
         test.setInterestRate(new BigDecimal("6.25"));
@@ -46,7 +46,7 @@ public class LoanTest{
         assertEquals(test.getPeriod(), BigDecimal.ONE);
     }
 
-    @Test
+    @Test(dependsOnMethods = "testGetPeriod")
     public void testSetPeriod(){
         Loan test = new Loan("Test Loan", new BigDecimal("42"), new BigDecimal("6"), new BigDecimal("1"));
         test.setPeriod(new BigDecimal("11"));
@@ -77,14 +77,14 @@ public class LoanTest{
         assertEquals(test.accrueInterest(24), new BigDecimal("36650.31"));
     }
 
-    @Test
+    @Test(dependsOnMethods = "testGetAmount")
     public void testIncrease(){
         Loan test = new Loan("Test Loan", new BigDecimal("42"), new BigDecimal("6"), new BigDecimal("1"));
         test.increase(new BigDecimal("500"));
         assertEquals(test.getAmount(), new BigDecimal("542"));
     }
 
-    @Test
+    @Test(dependsOnMethods = "testGetAmount")
     public void testDecrease(){
         Loan test = new Loan("Test Loan", new BigDecimal("5000"));
         test.decrease(new BigDecimal("500"));
