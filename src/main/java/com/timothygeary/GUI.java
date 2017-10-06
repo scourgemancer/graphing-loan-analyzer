@@ -1,17 +1,19 @@
 package com.timothygeary;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.chart.NumberAxis;
+import javafx.geometry.Pos;
 import javafx.scene.chart.StackedAreaChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.application.Application;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
+
 
 /** Aptly named class responsible for the Graphical User Interface */
 public class GUI extends Application{
@@ -28,9 +30,15 @@ public class GUI extends Application{
         BorderPane topSection = new BorderPane();
         root.setTop( topSection );
 
-        Label topLabel = new Label("Loans:");
+        Text topLabel = new Text("Loans:");
         topLabel.setUnderline( true );
+        double size = 12;
+        while(topLabel.getBoundsInParent().getWidth() < stage.getWidth()/13){ //increases the label's size until it fits
+            size += 0.01;
+            topLabel.setFont(Font.font(size));
+        }
         topSection.setTop( topLabel );
+        BorderPane.setAlignment(topLabel, Pos.CENTER);
 
         //Initializes the text fields to gather loan information
         VBox inputs = new VBox();
@@ -58,7 +66,6 @@ public class GUI extends Application{
         //Customize the application, its window, and display everything
         stage.setTitle("Graphing Loan Analyzer");
         stage.setScene( scene );
-        //stage.getIcons().add( new Image(getClass().getResourceAsStream("./resources/icon.png")) );
         stage.show();
     }
 
