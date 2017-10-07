@@ -49,6 +49,7 @@ public class GUI extends Application{
 
         BorderPane root = new BorderPane();
         Scene scene = new Scene( root );
+        stage.setScene( scene );
 
 
         //Sets up the section above the graph
@@ -65,7 +66,6 @@ public class GUI extends Application{
         topSection.setTop( topLabel );
         BorderPane.setAlignment(topLabel, Pos.CENTER);
         BorderPane.setMargin(topLabel, new Insets(0, 0, stage.getHeight()/50, 0));
-
 
         //Initializes the text fields to gather loan information
         VBox inputs = new VBox();
@@ -85,7 +85,6 @@ public class GUI extends Application{
         inputs.getChildren().addAll(name, amount, interest, interval);
         topSection.setCenter( inputs );
 
-
         //Creates a button to trigger generating a graph from the information in the text fields
         Button graphButton = new Button("Graph");
         graphButton.setOnAction(e -> {});//todo - implement
@@ -100,11 +99,13 @@ public class GUI extends Application{
         StackedAreaChart<Number, Number> graphs = new StackedAreaChart<>(xAxis, yAxis);
         graphs.setTitle("Overall Debt");
         root.setBottom( graphs );
+        scene.heightProperty().addListener( (observable, oldHeight, newHeight) -> {
+            graphs.setPrefHeight( (newHeight.doubleValue() - topSection.getHeight()) * 0.9 );
+        } );
 
 
         //Customize the application, its window, and display everything
         stage.setTitle("Graphing Loan Analyzer");
-        stage.setScene( scene );
         stage.show();
     }
 
