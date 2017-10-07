@@ -1,8 +1,10 @@
 package com.timothygeary;
 
 import javafx.scene.chart.StackedAreaChart;
-import javafx.application.Application;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.application.Application;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Paint;
@@ -75,12 +77,30 @@ public class GUI extends Application{
         TextField name = new TextField();
         TextField amount = new TextField();
         TextField interest = new TextField();
-        TextField interval = new TextField();
 
         styleTextField(name, "Name", stage, false);
         styleTextField(amount, "Loan amount", stage, true);
         styleTextField(interest, "Interest rate (percent)", stage, true);
-        styleTextField(interval, "How many times is interest compounded annually? (4, 12, 52, 365.25)", stage, true);
+
+        Text intervalText = new Text("How often is interest charged?");
+
+        ToggleGroup options = new ToggleGroup();
+        RadioButton daily = new RadioButton("Daily");
+        daily.setToggleGroup( options );
+        daily.setSelected( true );
+        RadioButton monthly = new RadioButton("Monthly");
+        monthly.setToggleGroup( options );
+        RadioButton quarterly = new RadioButton("Quarterly");
+        quarterly.setToggleGroup( options );
+        RadioButton annually = new RadioButton("Annually");
+        annually.setToggleGroup( options );
+
+        HBox intervalOptions = new HBox(daily, monthly, quarterly, annually );
+        VBox interval = new VBox(intervalText, intervalOptions);
+        interval.setSpacing( stage.getHeight()/150 );
+        interval.setAlignment( Pos.CENTER );
+        intervalOptions.setSpacing( stage.getWidth()/75 );
+        intervalOptions.setAlignment( Pos.CENTER );
 
         inputs.getChildren().addAll(name, amount, interest, interval);
         topSection.setCenter( inputs );
@@ -100,11 +120,12 @@ public class GUI extends Application{
         graphs.setTitle("Overall Debt");
         root.setBottom( graphs );
         scene.heightProperty().addListener( (observable, oldHeight, newHeight) -> {
-            graphs.setPrefHeight( (newHeight.doubleValue() - topSection.getHeight()) * 0.9 );
+            graphs.setPrefHeight( (newHeight.doubleValue() - topSection.getHeight()) * 0.95 );
         } );
 
 
         //Customize the application, its window, and display everything
+        topSection.requestFocus(); //so the function doesn't start focusing a text field, obscuring it's default text
         stage.setTitle("Graphing Loan Analyzer");
         stage.show();
     }
