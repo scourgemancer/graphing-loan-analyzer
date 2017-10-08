@@ -116,6 +116,24 @@ public class GUI extends Application{
 
 
         //The actual graph and its axes
+        /** Example of how to use the extfx date charts:
+         ObservableList<XYChart.Series<Date, Number>> series = FXCollections.observableArrayList();
+
+         ObservableList<XYChart.Data<Date, Number>> series1Data = FXCollections.observableArrayList();
+         series1Data.add(new XYChart.Data<Date, Number>(new GregorianCalendar(2012, 11, 15).getTime(), 2));
+         series1Data.add(new XYChart.Data<Date, Number>(new GregorianCalendar(2014, 5, 3).getTime(), 4));
+
+         ObservableList<XYChart.Data<Date, Number>> series2Data = FXCollections.observableArrayList();
+         series2Data.add(new XYChart.Data<Date, Number>(new GregorianCalendar(2014, 0, 13).getTime(), 8));
+         series2Data.add(new XYChart.Data<Date, Number>(new GregorianCalendar(2014, 7, 27).getTime(), 4));
+
+         series.add(new XYChart.Series<>("Series1", series1Data));
+         series.add(new XYChart.Series<>("Series2", series2Data));
+
+         NumberAxis numberAxis = new NumberAxis();
+         DateAxis dateAxis = new DateAxis();
+         LineChart<Date, Number> lineChart = new LineChart<>(dateAxis, numberAxis, series);
+         */
         DateAxis xAxis = new DateAxis();
         NumberAxis yAxis = new NumberAxis();
         StackedAreaChart<Date, Number> graphs = new StackedAreaChart<>(xAxis, yAxis);
