@@ -1,5 +1,6 @@
 package com.timothygeary;
 
+import com.timothygeary.extfx.DateAxis;
 import javafx.scene.chart.StackedAreaChart;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.RadioButton;
@@ -16,6 +17,7 @@ import javafx.geometry.Pos;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import java.util.Date;
 
 /** Aptly named class responsible for the Graphical User Interface */
 public class GUI extends Application{
@@ -114,9 +116,9 @@ public class GUI extends Application{
 
 
         //The actual graph and its axes
-        NumberAxis xAxis = new NumberAxis();
+        DateAxis xAxis = new DateAxis();
         NumberAxis yAxis = new NumberAxis();
-        StackedAreaChart<Number, Number> graphs = new StackedAreaChart<>(xAxis, yAxis);
+        StackedAreaChart<Date, Number> graphs = new StackedAreaChart<>(xAxis, yAxis);
         graphs.setTitle("Overall Debt");
         root.setBottom( graphs );
         scene.heightProperty().addListener( (observable, oldHeight, newHeight) -> {
