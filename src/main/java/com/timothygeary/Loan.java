@@ -44,6 +44,13 @@ public class Loan{
         this.period = p;
     }
 
+    public Loan(Loan other){
+        this.name = other.name;
+        this.amount = other.amount;
+        this.interestRate = other.interestRate;
+        this.period = other.period;
+    }
+
 
     //Relevant functions for the loan class
     /** Calculates interest for the loan's next period */
